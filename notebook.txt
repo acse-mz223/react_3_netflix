@@ -1,3 +1,5 @@
+# 网站访问链接: https://react-3-netflix.onrender.com
+
 # 电影数据来自themoviebd. 用户名moyuJack
 # 在react中涉及到 异步函数 与组件更新相关时, 异步函数的结果res = await XX 需要用useState来包裹，保证异步结果promise能正确转化为数据，并且更新到组件中
   - 情况1: 打开页面的时候直接执行异步操作的函数

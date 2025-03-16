@@ -13,7 +13,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 function App() {
   // check user is authed or not --> using the backend middleware protectedRoute
   const {checkauth, IsAuthed, IsCheckingAuth} = useAuthStore()
-  useEffect(() => checkauth(),[])
+  useEffect(() => {checkauth()},[])
   console.log("IsAuthed:",IsAuthed)
   console.log("IsCheckingAuth:",IsCheckingAuth)
 
