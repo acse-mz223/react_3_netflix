@@ -1,0 +1,217 @@
+# 电影数据来自themoviebd. 用户名moyuJack
+# 在react中涉及到 异步函数 与组件更新相关时, 异步函数的结果res = await XX 需要用useState来包裹，保证异步结果promise能正确转化为数据，并且更新到组件中
+  - 情况1: 打开页面的时候直接执行异步操作的函数
+    - 因为react本身是同步操作，因此这样的await异步操作需要使用useEffect包裹, 并且await要写成一个async函数，这个函数在useEffect中定义并使用
+    - 举例: 
+            function HomeScreen() {
+                // api
+                const {logout} = useAuthStore()
+                const {content, contentToMovie, contentToTv} = useContentStore()
+                // get trending content 
+                const [trending, setTrending] = useState()
+                useEffect(() =>{   -- 使用useEffect包裹
+                    const getTrendingFunc = async () => {  -- 这里定义async函数
+                        const resTrending = await axios.get(`api/${content}/trending`) 
+                        setTrending(resTrending.data.content)
+                    }
+                    getTrendingFunc()  --这里使用
+                },[content])
+                XXXXXX
+            }
+    - 情况2: 通过点击button等用户操作触发异步操作函数
+        - 这个时候触发异步函数的是用户，因此不需要使用useEffect中的触发变量来执行异步函数
+        - 当然这个触发函数不是async. 和useEffect一样，是在内部定义一个async函数并内部执行，结果给一个useState
+    # 如果有loading需求，在触发函数中使用try finally组合就可
+# 图表icon的style一般都是size-12 或者size-8 
+  py px 也是自己定义的定值
+  video的大小是100% 或者 70vh这样的参数
+  图片也是定义大小，如max-h-96 只定义一个就好能自适应
+
+项目构建中的知识点:
+1. 技术栈: react + express.js/node.js + mongodb 
+          dotenv: 用于env文件中的设置读取
+          axios: fetch的平替,可以自动解析json
+          cookie-parser: 用于解析cookie
+          npm: 包管理
+          vite: 前端包管理  --  npm create vite@latest . 
+          react的一些package:
+            - react-hot-toast: toast控件库
+            - lucide: icon库
+            - react-player: 视频播放控件库
+          zustand: react的一个全局状态管理库, 其实就是全局变量的管理  -- 详见src/sotre中js文件
+            - 将全局变量自定义成object形式的useState方便使用
+            - 此处用来管理所有的与后端的http
+          react-player: 用于播放视频
+   前框package: npm i axios lucide-react react-player react-hot-toast react-router-dom zustand
+   项目构架: ????
+        - 后端: auth + fetchfromDB + search
+   文件框架: ???
+
+2. dotenv 能获取.env文件中的参数
+举例:
+    - 在最外层的.env中定义需要的和环境有关的变量
+    - 在项目中创建一个config文件夹，其中创建一个envVars文件
+    - 文件用于读取.env文件中的变量，如下
+        import dotenv from "dotenv" 
+        dotenv.config() -- 获取参数
+        export const H = process.env.H  -- 获取.env中的参数
+    - 在需要H的地方import这个文件中的H即可
+
+3. mongodb 
+- model与schema: schema是数据库数据结构的描述，定义数据库中都有哪些feature什么类型等。 model是基于schema生成的数据库对象
+    - mongodb中scheme的写法
+        import mongoose from "mongoose";
+        // 1. 定义 Schema
+        const userSchema = new mongoose.Schema({
+        name: { type: String, required: true },  // 用户名，必须填
+        email: { type: String, required: true, unique: true },  // 邮箱，必须填，且唯一
+        password: { type: String, required: true },  // 密码，必须填
+        age: { type: Number, min: 0 },  // 年龄，不能为负数
+        isAdmin: { type: Boolean, default: false },  // 是否管理员，默认 false
+        createdAt: { type: Date, default: Date.now },  // 创建时间，默认为当前时间
+        });
+        // 2. 创建 Model -- 即创建一个表格
+        const User = mongoose.model("User", userSchema); -- 这里的命名要是没有s结尾的单数，并且首字母大写
+                                                         -- 创建的table的名字就会是加上复数形式的，例如users
+        // export 
+        export default User;
+    - 增删改查/CRUD
+        import User from "./models/User.js";  // 引入 User Model
+        - 增: 
+            const newUser = new User({ XXX });  -- 创建新用户对象, 将信息按键值对输入
+            await newUser.save(); -- 调用save方法将数据存储
+        - 查:
+            const users = await User.find(); -- 查询所有用户
+            const user = await User.findById(req.params.id) -- 按照Id查找用户
+            const user = await User.findOne({username: XXX}) -- 按照其他feature查找
+            const result = await YourModel.find({ category: "movies" }) // 查找所有 movies 分类的数据
+                .select("title rating createdAt -_id")  // 只返回 title、rating、createdAt, 因为默认总返回_id, 此处手动去除
+                .sort({ rating: -1, createdAt: 1 });    // 按 rating 降序(-1)，createdAt 升序(1)
+
+        - 改:
+            const updatedUser = await User.findByIdAndUpdate(req.params.id, updateData, { new: true }); -- req.body是客户端传来的JSON数据，用于更新用户信息
+                                                                                                  -- 函数默认返回修改前的用户信息
+                                                                                                  -- { new: true }使其返回修改后的
+            其中updateData的详细说明: -- 是个{}
+                - { $set: { name: "Moyu", age: 25 } }  -- 修改字段的值，如果字段不存在，就新增该字段
+                - { $push: { hobbies: "coding" } }  -- 往hobbies数组中push一个新值(可以重复添加)。如果hobbies 字段不存在，会自动创建一个数
+                - { $addToSet: { hobbies: "coding" } } -- 类似push，但不会重复添加(如果 "coding" 已经在 hobbies 里，就不会再添加)
+                - { $pull: { hobbies: "coding" } }  -- 如果 "coding" 在 hobbies 里，它会被删除                                                                                                 
+        - 删:
+            const deletedUser = await User.findByIdAndDelete(req.params.id); -- 用 id 删除指定的文档，并返回删除的文档（如果找到） 
+            const deletedUser = await YourModel.deleteOne({ name: "Alice" }); -- 找到第一条符合条件的文档并删除
+                                                                                              
+
+4. authentification 
+- 概念: 
+    - JWT Server: 是一个处理用户认证的服务器
+        - 用户将登录信息发给JWT Server进行验证
+        - 如果成功，JWT服务器返回JWT Token
+        - token 在有效期内会一直存储在用户设备中
+        - 后续用户对后端的其他请求，只要有这个token就说明用户是已授权的/是登录状态，后端可以返回信息，无需二次验证
+    - token: 是一种身份验证的凭证，通常是一个随机字符串，用来代表某个用户的身份。这个token存在过期时间
+    - cookie: 是存储在用户浏览器中的小数据(包括token), 在请求时自动附带在 HTTP Header 里
+- workflow:
+    - 用户通过前端控件发送请求
+    - 后端接收请求，对用户进行token验证/首次的话是生成token
+    - 后端接收请求，将用户信息与数据库进行交互
+
+5. postman -- 后端的test平台
+- 链接: https://www.postman.com/
+- 功能: 向指定的路径发送自定义请求，查看res是否正确
+
+6. bcryptjs -- 功能: 用于密码的加密
+- package: bcryptjs
+- 举例:
+    - 生成:
+        import bcryptjs from "bcryptjs"
+        const salt = await bcryptjs.genSalt(10)  --生成一个随机salt，用于hash过程
+        const passwordSalted = await bcryptjs.hash(password, salt)  -- 加密过程使用salt对password进行加密，最后的加密password中包含了
+                                                                    -- 这个过程是可逆的，通过加密的password可以提取出salt+原password
+    - 对比:
+         const isMatch = await bcryptjs.compare(password, user.password); -- 判断用户输入的password和db中的user.password是否相同
+
+7. jwt/JSON Web Token -- 解释见4
+- package: jsonwebtoken
+- JWT结构: 
+    - header/头部: 指定 JWT 使用的加密算法
+    - payload/载荷: 存储用户信息
+    - signature/签名: 服务器加密的签名，用于验证 Token 是否被篡改
+- 基本语法:
+    - 生成token: 
+        jwt.sign(payload, secretOrPrivateKey, [options, callback])  -- []表示可选
+            - payload: array, 为需要存入token的用户信息
+            - secretOrPrivateKey: string, 服务器的密钥。 服务器使用这个秘钥生成签名，存储在token中。每次验证时，服务器使用相同秘钥计算看是否与signature一致
+            - options: array, 额外配置, 比如expiresin 
+- 举例:
+    - .env文件:
+        JWT_SECRET=I_LOVE_EVERYTHING -- 设置秘钥
+    - 生成token + 设置cookie:
+        export const generateTokenAndSetCookie = (userId, res) =>{
+            const token = jwt.sign({userId}, JWT_SECRET, {expiresIn: "15d"}) -- 生成token
+            res.cookie("jwt-netflix",token,{   -- 使用token 设置cookie
+                maxAge: 15*24*60*60*1000,   -- cookie有效期（毫秒）
+                httpOnly: true, -- 仅在http中cookie有用
+                sameSite: "strict",
+                secure: NODE_ENV !== "development"  -- https是否应用，如果是开发环境localhost为http因此开发时这里设置为fasle
+            })
+            return token   -- 返回token，cookie设置在res中。res不需要返回，类似于输入的res是指针，所以函数内的操作直接修改了res本身
+        }
+    - 清除cookie
+        res.clearCookie("jwt-netflix") -- 将上面创建的cookie清除，其实就是logout操作的本质
+    - 验证token  -- 在此之前用 import protectRoute from './middleware/protectRoute.js'  + app.use(cookieParser()) 解析 cookie 
+        const decoded = jwt.verify(token, JWT_SECRET)  -- 服务器用 JWT_SECRET 计算 Signature
+                                                        -- 只要token的header, payloader被修改signature都会不对
+                                                        -- 同时也会检验token是否过期等
+                                                        -- 如果成功返回payloa的object,失败则抛出错误
+
+8. 部署/deployment -- 本质: 将react框架下的前端 放入后端中， 整个项目由vite管理器管理。
+    - step1: 前端运行build front end ->生成static文件在前端的dist文件夹下
+    - step2: 将前端的static文件 加入后端server.js的中间件
+        // deployment
+        if (NODE_ENV === "production"){  -- 当环境在production而不是development时(该参数在.env下面设置)
+            // add front end into back end
+            app.use(express.static(path.join(__dirname, "/frontend/dist")))  -- 向app中加入中间件
+                                                                             -- express.static用于将静态文件转化为中间件
+                                                                             -- 静态文件路径使用绝对路径表示
+                                                                                    -- 使用绝对路径是因为,如果是在其他根目录下使用路径方式运行server, 相对路径无法正确解析dist文件的位置
+            // return index
+            app.get("*", (res, req)=>{   -- 对于前端的请求，如果是上面定义了的req处理路径就走上面的函数
+                                         -- 前端加载页面需要的静态图片，文字等, 上面的express.static会自动处理
+                                         -- 由于前端使用了router，因此对于/subpage(即主页面以外的子页面)后端没法处理
+                                         -- 这里 * 的使用，对子页面也返回index.html, 使子页面能正常显示
+
+                res.sendFile(path.resolve("frontend", "dist", "index.html")) -- path.resolve将相对/绝对路径均改为绝对路径
+            })
+        } 
+    - step3: 在根目录下的package.json中写入部署过程命令: 前端后端库的安装+前端的静态文件生成
+        "scripts": {
+            "dev" : "node --watch backend/server.js", -- ·这里定义npm run dev命令, 使后端在开发模式下运行
+            "build" : "NODE_ENV=development  npm install && npm install --prefix frontend && npm run build --predix frontend",  -- 设置环境参数 + 前端后端库的安装+前端的静态文件生成
+            "start" : "NODE_ENV=production node back/server.js"  -- 设置环境参数 + 后端运行
+        }    
+
+
+
+9. 开发中出现的问题:
+- searchItemId = new mongoose.Types.ObjectId() 生成的id是一个ObjectId类型，而params获得的是string，因此需要mongoose.Types.ObjectId().toString()将其转换为string进行对比
+- dynamic router定义的顺序是有规律的
+- catch中的error固定的有参数 error.response, error.request, error.message 分别对应返回的响应，发出的请求， 其他错误
+- 前端一直报jwt的错误，但是前端根本就没有jwt，这是后端的东西: 发现前端import函数的时候不小心impot了后端的函数
+- <Route path="/signup" element={IsAuthed? <HomePage/>:<SignUpPage/>}/>
+  <Route path="/signup" element={IsAuthed? <Navigate to={"/HomePage"}/>:<SignUpPage/>}/>
+  上面两种哪个更好: 第二个，因为第一个即使显示了homepage，url还是/signup
+- 我先访问了"/" 并且确定了因为checkauth， isauthed 已经变成了true.此时我在去访问"/signup" 应该能直接跳转到“/” ,但是目前不行, isAuthed显示为false
+    猜测: 猜测是React Router 不会因为 Zustand 的 IsAuthed 变化而自动重新检查 <Route> 的 element，它的 <Routes> 组件只会在路径变化时重新解析.导致即使IsAuthed 变了，但 Routes 不会主动重新渲染，因此无法跳转
+    解决: 将checkAuth放到app中，useEffect(() => checkauth,[])。这样强制每次app刷新都验证一次，更新route
+- <Route path="/signup" element={IsAuthed? <Navigate to={"/"}/>:<SignUpPage/>}/>
+  问题: 在访问"/signup"的时候,如果用户已经登入，应该显示“/”,但是<SignUpPage/>页面还是会闪出来一下
+  原因: authCheck()异步函数正在运行，还没返回出 isAuthed=true的结果
+  解决: 设置一个loading 的useStete, 在还没返回结果的时候该参数为true，在true的时候设置为页面显示loading界面或空白界面
+- <div className={`relative bg-[url(${ORG_IMG_URL + trending?.poster_path})] w-full h-screen bg-cover bg-center`}>
+  问题: 即使trending使用了useState, 但是这个bg的classname似乎并不会根据url的变化重新渲染背景。即使web的inspect的url中这里已经显示了新的正确的img的url, 还是不能正确显示图片
+  解决: 不使用bg显示图片，而是在这个div下面创建一个absoulte的img的div，使用img显示图片
+
+
+
+
