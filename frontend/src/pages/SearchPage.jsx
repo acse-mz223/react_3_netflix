@@ -72,20 +72,27 @@ function SearchPage() {
             <div className='max-x-6xl w-full mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4'>
                 {searchReuslt?.map((result) =>{
                     if (!result.poster_path && !result.profile_path) return null
+                    // name + title pre-adjust
+                    let name = result.title || result.name
+                    if (name.length > 50) {
+                        name = name.slice(0,40) + "..."
+                    }
+                    // person
                     if (selectedType === "person"){
                         return(
                             <div className='bg-gray-800 flex flex-col items-center justify-start gap-4 p-4 h-full' key={result.id}>
                                 <img className='max-h-95 rounded-md' src={ORG_IMG_URL + (result.profile_path || result.poster_path) } alt='post img'/>
-                                <div className='text-center text-2xl font-bold'>{result.title || result.name}</div>
+                                <div className='text-center text-xl font-bold'>{name}</div>
                             </div>
                         )
                     }
+                    // movie + tv
                     else {
                         return(
                             <Link to={`/media/${result.id}`}>
                                 <div className='bg-gray-800 flex flex-col items-center justify-start gap-4 p-4 h-full' key={result.id}>
                                     <img className='max-h-95 rounded-md' src={ORG_IMG_URL + (result.profile_path || result.poster_path) } alt='post img'/>
-                                    <div className='text-center text-2xl font-bold'>{result.title || result.name}</div>
+                                    <div className='text-center text-xl font-bold'>{name}</div>
                                 </div>
                             </Link>
                         )

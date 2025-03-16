@@ -32,15 +32,15 @@ function AuthScreen() {
                     <button onClick={handleSubmitLogIn} className='bg-red-600 px-5 py-2 text-white text-lg rounded-md animate-all duration-10 hover:bg-red-700 cursor-pointer'>Log in</button>
                 </header>
                 <div className='flex flex-col items-center mt-50 space-y-3 text-white text-center'>
-                    <div className='max-w-2xl font-extrabold leading-22 text-5xl md:text-6xl lg:text-7xl'>Unlimited films, TV programmes and more</div>
-                    <div className='max-w-2xl px-20  text-xl lg:text-2xl lg:font-semibold'>Starts at £5.99. Cancel at any time.</div>
-                    <div className='max-w-2xl mt-5 text-lg lg:text-xl '>Ready to watch? Enter your email to create or restart your membership.</div>
-                    <form onSubmit={handleSubmitSignUp} className='flex gap-4 flex-col md:flex-row  w-1/2 items-center justify-between'>
-                        <div className='w-full mr-3 tabindex="0" px-5 py-2 border  border-gray-400 bg-black/60 rounded-md relative focus-within:ring-1 focus-within:ring-white' style={{cursor: 'text'}} onFocus={()=> setIsEmailFocused(true)} onBlur={()=> {formData.email? null:setIsEmailFocused(false)}}>
-                            <label htmlFor='email' className={`text-gray-400 absolute font-extralight left-5 ${isEmailFocused? "text-lg top-2":"text-2xl top-6"} transition-all`} >Email address</label>
+                    <div className='max-w-xl font-extrabold leading-22 text-4xl md:text-6xl'>Unlimited films, TV programmes and more</div>
+                    <div className='max-w-2xl px-20  text-lg lg:text-xl lg:font-semibold'>Starts at £5.99. Cancel at any time.</div>
+                    <div className='max-w-2xl mt-5 text-lg lg:text-xl font-light '>Ready to watch? Enter your email to create or restart your membership.</div>
+                    <form onSubmit={handleSubmitSignUp} className='flex gap-4 flex-col md:flex-row  w-3/7 items-center justify-between'>
+                        <div className='w-full mr-2 tabindex="0" px-5 py-1 border  border-gray-400 bg-black/60 rounded-md relative focus-within:ring-1 focus-within:ring-white' style={{cursor: 'text'}} onFocus={()=> setIsEmailFocused(true)} onBlur={()=> {formData.email? null:setIsEmailFocused(false)}}>
+                            <label htmlFor='email' className={`text-gray-400 absolute font-extralight left-5 ${isEmailFocused? "text-lg top-2":"text-2xl top-4.5"} transition-all`} >Email address</label>
                             <input type='email' name='email' id="email" className='mt-8 w-full text-xl focus:outline-none' onChange={(event) => {setFormData((pre)=>{return {...pre, [event.target.name] : event.target.value}})}} value={formData.email}></input>
                         </div>
-                        <button type='submit' className='flex items-center justify-center text-2xl 2xl:text-3xl py-6 2xl:py-5 w-80 2xl:w-85 rounded-md bg-red-600 hover:bg-red-700'>
+                        <button type='submit' className='flex items-center justify-center text-xl 2xl:text-2xl py-2 2xl:py-4 w-80 2xl:w-85 rounded-md bg-red-600 hover:bg-red-700'>
                             Get Started
                             <ChevronRight className="size-8 2xl:size-10 m-0"/>
                         </button>

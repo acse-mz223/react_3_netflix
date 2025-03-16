@@ -215,6 +215,8 @@
 - <div className={`relative bg-[url(${ORG_IMG_URL + trending?.poster_path})] w-full h-screen bg-cover bg-center`}>
   问题: 即使trending使用了useState, 但是这个bg的classname似乎并不会根据url的变化重新渲染背景。即使web的inspect的url中这里已经显示了新的正确的img的url, 还是不能正确显示图片
   解决: 不使用bg显示图片，而是在这个div下面创建一个absoulte的img的div，使用img显示图片
+- localhost和部署后字体显示不一致，但是tool中font-size相同
+  解决: 默认broswer zoom是100%。部署后显示的也是100%，但是我localhost编写的时候按照75%的zoom编辑的font-size
 
 
 
