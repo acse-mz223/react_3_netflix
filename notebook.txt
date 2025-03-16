@@ -190,7 +190,9 @@
             "build" : "NODE_ENV=development  npm install && npm install --prefix frontend && npm run build --predix frontend",  -- 设置环境参数 + 前端后端库的安装+前端的静态文件生成
             "start" : "NODE_ENV=production node back/server.js"  -- 设置环境参数 + 后端运行
         }    
-
+    - step4: 将内容push到github上面
+            # 注意写.gitignore文件在最外层，要ignore掉父文件夹和frontend的node_module + frontend 的 dist
+    - step5: 此处使用render.com平台(a cloud application platform)进行部署
 
 
 9. 开发中出现的问题:
