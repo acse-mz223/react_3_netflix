@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .hero-bg {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%,rgba(0, 0, 0, 0.1) 50% , rgba(0, 0, 0, 0.8) 100%), url("hero.png");
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%,rgba(0, 0, 0, 0.1) 50% , rgba(0, 0, 0, 0.8) 100%), url("/hero.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
