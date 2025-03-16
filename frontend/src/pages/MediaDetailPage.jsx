@@ -121,10 +121,11 @@ function MediaDetailPage() {
                 <div className='font-extrabold text-2xl'>Similars</div>
                 <div className='flex flex-row gap-4 w-full overflow-x-scroll scrollbar-hide' ref={sliderRef} onMouseEnter={()=> setShowArrow(true)} onMouseLeave={()=> setShowArrow(false)}>
                     {   
-                        mediaSearchSimilar.length === 0? <div className='text-md text-gray-400'>Ops! No resources</div>:
+                        mediaSearchSimilar? 
                         mediaSearchSimilar.map((media) => {
                             return <SliderItem media={media} type={content} key={media.id}/>
-                        })
+                        }):
+                        <div className='text-md text-gray-400'>Ops! No resources</div>
                     }
                     {
                         showArrow && (
