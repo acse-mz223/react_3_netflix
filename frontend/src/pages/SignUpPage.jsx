@@ -32,13 +32,13 @@ function SignUpPage() {
     navigate("/login?email=" + formData.email)
   }
   return (
-    <div className='hero-bg h-screen'>
-        <header className='w-6xl flex flex-row items-center justify-between mx-auto p-4'>
+    <div className='relative hero-bg h-screen w-full'>
+        <header className='absolute left-10 top-5  max-w-6xl flex flex-row items-center justify-between p-4 z-50'>
             <Link to={"/"}>
                 <img src='netflix-logo.png' alt="netflix-logo" className='w-52'/>
             </Link>
         </header>
-        <div className='max-w-xl mx-auto bg-black/75 rounded-md p-18 mt-40 flex flex-col justify-center items-center shadow-md space-y-6'>
+        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-xl w-full bg-black/75 rounded-md p-18 mt-10 flex flex-col justify-center items-center shadow-md space-y-6'>
             <h1 className='font-semibold text-white text-4xl mb-12 '>Sign Up</h1>
             <form className='space-y-6 w-full' onSubmit={submit}>
                 {/* <div className='group px-5 py-2 border border-gray-600 rounded-md relative focus-within:ring-1 focus-within:ring-white tabindex="0"' >
