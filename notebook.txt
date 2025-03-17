@@ -30,26 +30,70 @@
   图片也是定义大小，如max-h-96 只定义一个就好能自适应
 
 项目构建中的知识点:
-1. 技术栈: react + express.js/node.js + mongodb 
-          dotenv: 用于env文件中的设置读取
-          axios: fetch的平替,可以自动解析json
-          cookie-parser: 用于解析cookie
-          npm: 包管理
-          vite: 前端包管理  --  npm create vite@latest . 
-          react的一些package:
-            - react-hot-toast: toast控件库
+1.1 技术栈: 
+    - 整体: vite + npm
+    - 前端: npm i axios lucide-react react-player react-hot-toast react-router-dom zustand
+        - react: 前端框架
+        - tailwind: css
+        - zustand: react的一个全局状态管理库, 其实就是全局变量的管理  -- 详见src/sotre中js文件
+        - component库:
+            - react-player: 视频播放控件
             - lucide: icon库
-            - react-player: 视频播放控件库
-          zustand: react的一个全局状态管理库, 其实就是全局变量的管理  -- 详见src/sotre中js文件
-            - 将全局变量自定义成object形式的useState方便使用
-            - 此处用来管理所有的与后端的http
-          react-player: 用于播放视频
-   前框package: npm i axios lucide-react react-player react-hot-toast react-router-dom zustand
-   项目构架: ????
-        - 后端: auth + fetchfromDB + search
-   文件框架: ???
+            - react-hot-toast: toast控件库
+    - 后端:
+        - node.js/express.js: 后端语言
+        - mongodb: 数据库
+        - dotenv: 环境参数辅助获取库, 用于env文件中的设置读取
+        - axios: api辅助库, fetch的平替,可以自动解析json
+        - jsonwebtoken: 网页token的生成，校验
+        - cookie-parser: 用于解析cookie
+        - bcryptjs: 用于用户密码的加密保存
+    - 部署: 
+        - render: 一个部署平台
 
-2. dotenv 能获取.env文件中的参数
+1.2 项目功能梳理:
+    - 功能:
+        - 登录: 登录+注册+登出 => token生成+密码校验+数据库读写
+        - 数据显示: trending+ category + detail + similars + trailer => 电影资源的数据读取
+        - 搜索: 历史记录 + 搜索 => 数据库读写 + 电影资源的数据读取
+    - 交互:
+        - 响应式交互
+        - scroll + animation 交互
+        - 图片 + 视频 显示
+
+1.3 项目文件构架:
+    - 项目:
+        - 文件- node_modules: vite项目使用的所有库
+        - 文件- .env: 项目所有环境变量
+        - 文件- .gitignore: 项目所有的gitignore
+        - 文件- package.json: 项目的console运行的命令定义+设置
+        - 后端:
+            - 文件夹- config: 从.env 读取环境变量 + 定义链接到mongodb的函数
+            - 文件夹- controllers: 定义具体的api调用函数, 负责与数据库的沟通
+            - 文件夹- middleware: 有protectRoute函数用于检查用户是否authenticated
+            - 文件夹- models: 定义数据库model
+            - 文件夹- route: 定义不同路径下对应使用的controllers
+            - 文件夹- service: 定义从资源库tmdb获取数据的函数,本质就是fetch函数
+            - 文件夹- utils: 生成token函数
+            - 文件- server.js: 后端主文件，本质是不同路径下的router匹配 + app.listen函数 + 部署使把前端静态文件加入middleware
+        - 前端: react框架
+            - 文件夹- node_modules: react使用的所有库
+            - 文件夹- public: 所有静态资源
+            - 文件夹- src: 
+                - 文件夹- components: 自定义的所有控件
+                - 文件夹- pages: 自定义的所有子页面
+                - 文件夹- store: 使用zustand自定义的hook
+                - 文件夹- utils: 其下contants储存一些常熟
+                - 文件- app,js: 主文件
+                - 文件- main.js: 默认即可
+                - 文件- index.css: 用于不使用tailwind的css定义
+            - 文件- index.html: 默认即可
+            - 文件- package.json: 前端console运行的命令定义+设置 
+            - 文件- tailwind.config.js: tailwind参数设置
+
+
+技术内容:
+1. dotenv 能获取.env文件中的参数
 举例:
     - 在最外层的.env中定义需要的和环境有关的变量
     - 在项目中创建一个config文件夹，其中创建一个envVars文件
@@ -59,7 +103,7 @@
         export const H = process.env.H  -- 获取.env中的参数
     - 在需要H的地方import这个文件中的H即可
 
-3. mongodb 
+2. mongodb 
 - model与schema: schema是数据库数据结构的描述，定义数据库中都有哪些feature什么类型等。 model是基于schema生成的数据库对象
     - mongodb中scheme的写法
         import mongoose from "mongoose";
@@ -104,7 +148,7 @@
             const deletedUser = await YourModel.deleteOne({ name: "Alice" }); -- 找到第一条符合条件的文档并删除
                                                                                               
 
-4. authentification 
+3. authentification 
 - 概念: 
     - JWT Server: 是一个处理用户认证的服务器
         - 用户将登录信息发给JWT Server进行验证
@@ -118,11 +162,11 @@
     - 后端接收请求，对用户进行token验证/首次的话是生成token
     - 后端接收请求，将用户信息与数据库进行交互
 
-5. postman -- 后端的test平台
+4. postman -- 后端的test平台
 - 链接: https://www.postman.com/
 - 功能: 向指定的路径发送自定义请求，查看res是否正确
 
-6. bcryptjs -- 功能: 用于密码的加密
+5. bcryptjs -- 功能: 用于密码的加密
 - package: bcryptjs
 - 举例:
     - 生成:
@@ -133,7 +177,7 @@
     - 对比:
          const isMatch = await bcryptjs.compare(password, user.password); -- 判断用户输入的password和db中的user.password是否相同
 
-7. jwt/JSON Web Token -- 解释见4
+6. jwt/JSON Web Token -- 解释见4
 - package: jsonwebtoken
 - JWT结构: 
     - header/头部: 指定 JWT 使用的加密算法
@@ -167,7 +211,7 @@
                                                         -- 同时也会检验token是否过期等
                                                         -- 如果成功返回payloa的object,失败则抛出错误
 
-8. 部署/deployment -- 本质: 将react框架下的前端 放入后端中， 整个项目由vite管理器管理。
+7. 部署/deployment -- 本质: 将react框架下的前端 放入后端中， 整个项目由vite管理器管理。
     - step1: 前端运行build front end ->生成static文件在前端的dist文件夹下
     - step2: 将前端的static文件 加入后端server.js的中间件
         // deployment
@@ -193,11 +237,12 @@
             "start" : "NODE_ENV=production node back/server.js"  -- 设置环境参数 + 后端运行
         }    
     - step4: 将内容push到github上面
-            # 注意写.gitignore文件在最外层，要ignore掉父文件夹和frontend的node_module + frontend 的 dist
+            # 注意写.gitignore文件在最外层，要ignore掉父文件夹和frontend的node_module + frontend 的 dist + 最外层.env文件
     - step5: 此处使用render.com平台(a cloud application platform)进行部署
+        - 在最外层有.env文件,上传时不要上传到高git。在部署时会要求输入env configuration，在那里输入即可
 
 
-9. 开发中出现的问题:
+8. 开发中出现的问题:
 - searchItemId = new mongoose.Types.ObjectId() 生成的id是一个ObjectId类型，而params获得的是string，因此需要mongoose.Types.ObjectId().toString()将其转换为string进行对比
 - dynamic router定义的顺序是有规律的
 - catch中的error固定的有参数 error.response, error.request, error.message 分别对应返回的响应，发出的请求， 其他错误
