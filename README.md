@@ -9,7 +9,7 @@
 <h1 align="center">Netflix VIdeo Platform Replication</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/{acse-mz223}/react_3_netflix?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/acse-mz223/react_3_netflix?color=56BEB8">
 
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/{{acse-mz223}}/react_3_netflix?color=56BEB8">
 
