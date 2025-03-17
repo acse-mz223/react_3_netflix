@@ -38,7 +38,7 @@
   <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
-  <a href="#memo-license">License</a> &#xa0; | &#xa0;
+  <!-- <a href="#memo-license">License</a> &#xa0; | &#xa0; -->
   <a href="https://github.com/acse-mz223" target="_blank">Author</a>
 </p>
 
@@ -46,27 +46,36 @@
 
 ## :dart: About ##
 
-Describe your project
+This project is a replica of the Netflix video platform, developed to demonstrate proficiency in full-stack web development and provide a real-world simulation of how a streaming service works. The platform is built using Vite, Express.js, React, and other modern web technologies, providing a seamless experience for users to browse, search, and watch videos.
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+:heavy_check_mark: User Authentication – Implemented user registration, login, and secure session management using JWT and bcrypt.js for password encryption.
+:heavy_check_mark: Video Display & Search – Integrated with TMDB API to fetch and display trending movies, categories, and trailers. The platform allows users to search and view detailed movie information.
+:heavy_check_mark: Responsive Interactive UI – Designed with Tailwind CSS for a responsive, user-friendly layout, optimized for both desktop and mobile devices.
+:heavy_check_mark: HD Video Playback – Incorporated React Player for smooth and high-definition video playback.
+:heavy_check_mark: Serverless Deployment – Deployed on Render with a serverless architecture to ensure scalability, high availability, and quick load times.
 
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
 
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
+- "Vite" [https://vitejs.dev/]
+- "Express.js" [https://expressjs.com/]
+- "React" [https://reactjs.org/]
+- "Tailwind CSS" [https://tailwindcss.com/]
+- "Axios" [https://axios-http.com/]
+- "MongoDB" [https://www.mongodb.com/]
+- "JWT" [https://jwt.io/]
+- "bcrypt.js" [https://www.npmjs.com/package/bcryptjs]
+- "Render" [https://render.com/]
+- "TMDB API" [https://www.themoviedb.org/]
+- "React Player" [https://github.com/CookPete/react-player]
+- "Neon" [https://neon.tech/]
 
 ## :white_check_mark: Requirements ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com), [Node](https://nodejs.org/en/) and [NPM](https://www.npmjs.com/) installed.
 
 ## :checkered_flag: Starting ##
 
@@ -78,20 +87,20 @@ $ git clone https://github.com/acse-mz223/react_3_netflix
 $ cd react_3_netflix
 
 # Install dependencies
-$ yarn
+$ npm run build
 
 # Run the project
-$ yarn start
+$ npm run start 
 
 # The server will initialize in the <http://localhost:3000>
 ```
 
-## :memo: License ##
+<!-- ## :memo: License ##
 
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
+This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file. -->
 
 
-Made with :heart: by <a href="https://github.com/acse-mz223" target="_blank">{{YOUR_NAME}}</a>
+Made by <a href="https://github.com/acse-mz223" target="_blank">Mo</a>
 
 &#xa0;
 
