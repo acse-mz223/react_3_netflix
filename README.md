@@ -48,30 +48,32 @@
 
 This project is a replica of the Netflix video platform, developed to demonstrate proficiency in full-stack web development and provide a real-world simulation of how a streaming service works. The platform is built using Vite, Express.js, React, and other modern web technologies, providing a seamless experience for users to browse, search, and watch videos.
 
+[Link to the live demo](https://react-3-netflix.onrender.com)
+
 ## :sparkles: Features ##
 
-:heavy_check_mark: User Authentication – Implemented user registration, login, and secure session management using JWT and bcrypt.js for password encryption.
-:heavy_check_mark: Video Display & Search – Integrated with TMDB API to fetch and display trending movies, categories, and trailers. The platform allows users to search and view detailed movie information.
-:heavy_check_mark: Responsive Interactive UI – Designed with Tailwind CSS for a responsive, user-friendly layout, optimized for both desktop and mobile devices.
-:heavy_check_mark: HD Video Playback – Incorporated React Player for smooth and high-definition video playback.
-:heavy_check_mark: Serverless Deployment – Deployed on Render with a serverless architecture to ensure scalability, high availability, and quick load times.
+:heavy_check_mark: User Authentication – Implemented user registration, login, and secure session management using JWT and bcrypt.js for password encryption.;\
+:heavy_check_mark: Video Display & Search – Integrated with TMDB API to fetch and display trending movies, categories, and trailers. The platform allows users to search and view detailed movie information.;\
+:heavy_check_mark: Responsive Interactive UI – Designed with Tailwind CSS for a responsive, user-friendly layout, optimized for both desktop and mobile devices.;\
+:heavy_check_mark: HD Video Playback – Incorporated React Player for smooth and high-definition video playback.;\
+:heavy_check_mark: Serverless Deployment – Deployed on Render with a serverless architecture to ensure scalability, high availability, and quick load times.;\
 
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
 
-- "Vite" [https://vitejs.dev/]
-- "Express.js" [https://expressjs.com/]
-- "React" [https://reactjs.org/]
-- "Tailwind CSS" [https://tailwindcss.com/]
-- "Axios" [https://axios-http.com/]
-- "MongoDB" [https://www.mongodb.com/]
-- "JWT" [https://jwt.io/]
-- "bcrypt.js" [https://www.npmjs.com/package/bcryptjs]
-- "Render" [https://render.com/]
-- "TMDB API" [https://www.themoviedb.org/]
-- "React Player" [https://github.com/CookPete/react-player]
-- "Neon" [https://neon.tech/]
+- (Vite) [https://vitejs.dev/]
+- (Express.js) [https://expressjs.com/]
+- (React) [https://reactjs.org/]
+- (Tailwind CSS) [https://tailwindcss.com/]
+- (Axios) [https://axios-http.com/]
+- (MongoDB) [https://www.mongodb.com/]
+- (JWT) [https://jwt.io/]
+- (bcrypt.js) [https://www.npmjs.com/package/bcryptjs]
+- (Render) [https://render.com/]
+- (TMDB API) [https://www.themoviedb.org/]
+- (React Player) [https://github.com/CookPete/react-player]
+- (Neon) [https://neon.tech/]
 
 ## :white_check_mark: Requirements ##
 
