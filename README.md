@@ -48,7 +48,7 @@
 
 This project is a replica of the Netflix video platform, developed to demonstrate proficiency in full-stack web development and provide a real-world simulation of how a streaming service works. The platform is built using Vite, Express.js, React, and other modern web technologies, providing a seamless experience for users to browse, search, and watch videos.
 
-[Link to the live demo](https://react-3-netflix.onrender.com)
+<a href="https://react-3-netflix.onrender.com" target="_blank">Link to the live demo</a>
 
 ## :sparkles: Features ##
 
