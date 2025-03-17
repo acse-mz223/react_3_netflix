@@ -52,11 +52,11 @@ This project is a replica of the Netflix video platform, developed to demonstrat
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: User Authentication – Implemented user registration, login, and secure session management using JWT and bcrypt.js for password encryption.;\
-:heavy_check_mark: Video Display & Search – Integrated with TMDB API to fetch and display trending movies, categories, and trailers. The platform allows users to search and view detailed movie information.;\
-:heavy_check_mark: Responsive Interactive UI – Designed with Tailwind CSS for a responsive, user-friendly layout, optimized for both desktop and mobile devices.;\
-:heavy_check_mark: HD Video Playback – Incorporated React Player for smooth and high-definition video playback.;\
-:heavy_check_mark: Serverless Deployment – Deployed on Render with a serverless architecture to ensure scalability, high availability, and quick load times.;\
+:heavy_check_mark: User Authentication – Implemented user registration, login, and secure session management using JWT and bcrypt.js for password encryption.\
+:heavy_check_mark: Video Display & Search – Integrated with TMDB API to fetch and display trending movies, categories, and trailers. The platform allows users to search and view detailed movie information.\
+:heavy_check_mark: Responsive Interactive UI – Designed with Tailwind CSS for a responsive, user-friendly layout, optimized for both desktop and mobile devices.\
+:heavy_check_mark: HD Video Playback – Incorporated React Player for smooth and high-definition video playback.\
+:heavy_check_mark: Serverless Deployment – Deployed on Render with a serverless architecture to ensure scalability, high availability, and quick load times.
 
 ## :rocket: Technologies ##
 
@@ -94,7 +94,7 @@ $ npm run build
 # Run the project
 $ npm run start 
 
-# The server will initialize in the <http://localhost:3000>
+# The server will initialize in the <http://localhost:5001>
 ```
 
 <!-- ## :memo: License ##
