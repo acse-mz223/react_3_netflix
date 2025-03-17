@@ -62,18 +62,18 @@ This project is a replica of the Netflix video platform, developed to demonstrat
 
 The following tools were used in this project:
 
-- (Vite) [https://vitejs.dev/]
-- (Express.js) [https://expressjs.com/]
-- (React) [https://reactjs.org/]
-- (Tailwind CSS) [https://tailwindcss.com/]
-- (Axios) [https://axios-http.com/]
-- (MongoDB) [https://www.mongodb.com/]
-- (JWT) [https://jwt.io/]
-- (bcrypt.js) [https://www.npmjs.com/package/bcryptjs]
-- (Render) [https://render.com/]
-- (TMDB API) [https://www.themoviedb.org/]
-- (React Player) [https://github.com/CookPete/react-player]
-- (Neon) [https://neon.tech/]
+- [Vite] [https://vitejs.dev/]
+- [Express.js] [https://expressjs.com/]
+- [React] [https://reactjs.org/]
+- [Tailwind CSS] [https://tailwindcss.com/]
+- [Axios] [https://axios-http.com/]
+- [MongoDB] [https://www.mongodb.com/]
+- [JWT] [https://jwt.io/]
+- [bcrypt.js] [https://www.npmjs.com/package/bcryptjs]
+- [Render] [https://render.com/]
+- [TMDB API] [https://www.themoviedb.org/]
+- [React Player] [https://github.com/CookPete/react-player]
+- [Neon] [https://neon.tech/]
 
 ## :white_check_mark: Requirements ##
 
