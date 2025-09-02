@@ -17,18 +17,8 @@
 
   <img alt="License" src="https://img.shields.io/github/license/acse-mz223/react_3_netflix?color=56BEB8">
 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/acse-mz223/react_3_netflix?color=56BEB8" /> -->
-
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/acse-mz223/react_3_netflix?color=56BEB8" /> -->
-
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/acse-mz223/react_3_netflix?color=56BEB8" /> -->
 </p>
 
-<!-- Status -->
-
-<!-- <h4 align="center"> 
-	🚧  React_3_netflix 🚀 Under construction...  🚧
-</h4> 
 
 <hr> -->
 
@@ -46,17 +36,44 @@
 
 ## :dart: About ##
 
-This project is a replica of the Netflix video platform, developed to demonstrate proficiency in full-stack web development and provide a real-world simulation of how a streaming service works. The platform is built using Vite, Express.js, React, and other modern web technologies, providing a seamless experience for users to browse, search, and watch videos.
+This project is a replica of the Netflix video platform, developed to demonstrate proficiency in full-stack web development and provide a real-world simulation of how a streaming service works. The platform is built using `Vite`, `Express.js`, `React`, and other modern web technologies, providing a seamless experience for users to browse, search, and watch videos.
 
-<a href="https://react-3-netflix.onrender.com" target="_blank">Link to the live demo(Need a minute to load for the first time)</a>
+[🔗 Live Demo (may take a minute to load the first time)](https://react-3-netflix.onrender.com)
+
+---
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: User Authentication – Implemented user registration, login, and secure session management using JWT and bcrypt.js for password encryption.\
-:heavy_check_mark: Video Display & Search – Integrated with TMDB API to fetch and display trending movies, categories, and trailers. The platform allows users to search and view detailed movie information.\
-:heavy_check_mark: Responsive Interactive UI – Designed with Tailwind CSS for a responsive, user-friendly layout, optimized for both desktop and mobile devices.\
-:heavy_check_mark: HD Video Playback – Incorporated React Player for smooth and high-definition video playback.\
-:heavy_check_mark: Serverless Deployment – Deployed on Render with a serverless architecture to ensure scalability, high availability, and quick load times.
+- ✅ **User Authentication** – Implemented user registration, login, and secure session management using `JWT` and `bcrypt.js` for password encryption.  
+- ✅ **Video Display & Search** – Integrated with `TMDB API` to fetch and display trending movies, categories, and trailers. The platform allows users to search and view detailed movie information.  
+- ✅ **Responsive Interactive UI** – Designed with `Tailwind CSS` for a responsive, user-friendly layout, optimized for both desktop and mobile devices.  
+- ✅ **HD Video Playback** – Incorporated `React Player` for smooth and high-definition video playback.  
+- ✅ **Serverless Deployment** – Deployed on `Render` with a serverless architecture to ensure scalability, high availability, and quick load times.  
+
+---
+
+## :page_facing_up: Pages Overview ##
+### **Homepage**  
+Displays trending movies, categories, and personalized recommendations for users.  
+![Homepage](assets/homepage_1.png)  
+![Homepage](assets/homepage_2.png)  
+![Homepage](assets/homepage_3.png)  
+
+### **Login / Signup**  
+Handles user authentication with secure login and registration.  
+![LoginSignup](assets/login.png)  
+
+### **Media Detail Page**  
+Shows detailed information about a selected movie or series, including description, cast, and trailers.  
+![MediaDetail](assets/detail_1.png)  
+![MediaDetail](assets/detail_2.png)  
+
+### **Search Page**  
+Allows users to search for movies or tvs by title or keyword and view detailed results.  
+![Search](assets/search.png)  
+
+
+---
 
 ## :rocket: Technologies ##
 
@@ -75,9 +92,13 @@ The following tools were used in this project:
 - [React Player] [https://github.com/CookPete/react-player]
 - [Neon] [https://neon.tech/]
 
+---
+
 ## :white_check_mark: Requirements ##
 
 Before starting :checkered_flag:, you need to have [Git](https://git-scm.com), [Node](https://nodejs.org/en/) and [NPM](https://www.npmjs.com/) installed.
+
+---
 
 ## :checkered_flag: Starting ##
 
