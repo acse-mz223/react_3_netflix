@@ -72,7 +72,6 @@ Shows detailed information about a selected movie or series, including descripti
 Allows users to search for movies or tvs by title or keyword and view detailed results.  
 ![Search](assets/search.png)  
 
-
 ---
 
 ## :rocket: Technologies ##
