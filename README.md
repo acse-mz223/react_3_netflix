@@ -1,36 +1,24 @@
 <div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="Netflix VIdeo Platform Replication" />
+  <img src="./.github/app.gif" alt="Theatre Ticket Booking System" />
 
   &#xa0;
 
-  <!-- <a href="https://react_3_netflix.netlify.app">Demo</a> -->
+  <!-- <a href="https://your-demo-link.com">Demo</a> -->
 </div>
 
-<h1 align="center">Netflix VIdeo Platform Replication</h1>
+<h1 align="center">🎭 Theatre Ticket Booking System</h1>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/acse-mz223/react_3_netflix?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/acse-mz223/theatre_ticket_booking?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/acse-mz223/react_3_netflix?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/acse-mz223/theatre_ticket_booking?color=56BEB8">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/acse-mz223/react_3_netflix?color=56BEB8">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/acse-mz223/theatre_ticket_booking?color=56BEB8">
 
-  <img alt="License" src="https://img.shields.io/github/license/acse-mz223/react_3_netflix?color=56BEB8">
-
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/acse-mz223/react_3_netflix?color=56BEB8" /> -->
-
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/acse-mz223/react_3_netflix?color=56BEB8" /> -->
-
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/acse-mz223/react_3_netflix?color=56BEB8" /> -->
+  <img alt="License" src="https://img.shields.io/github/license/acse-mz223/theatre_ticket_booking?color=56BEB8">
 </p>
 
-<!-- Status -->
-
-<!-- <h4 align="center"> 
-	🚧  React_3_netflix 🚀 Under construction...  🚧
-</h4> 
-
-<hr> -->
+<hr>
 
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
@@ -38,7 +26,6 @@
   <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
-  <!-- <a href="#memo-license">License</a> &#xa0; | &#xa0; -->
   <a href="https://github.com/acse-mz223" target="_blank">Author</a>
 </p>
 
@@ -46,55 +33,54 @@
 
 ## :dart: About ##
 
-This project is a replica of the Netflix video platform, developed to demonstrate proficiency in full-stack web development and provide a real-world simulation of how a streaming service works. The platform is built using Vite, Express.js, React, and other modern web technologies, providing a seamless experience for users to browse, search, and watch videos.
+A full-stack theatre ticket booking system built with React, Express.js, and MongoDB.  
+The platform provides both a client-side booking interface and an admin dashboard, featuring user authentication, secure payments, and a responsive, motion-enhanced UI for a seamless theatre experience.  
 
-<a href="https://react-3-netflix.onrender.com" target="_blank">Link to the live demo(Need a minute to load for the first time)</a>
+<a href="https://your-live-demo-link.com" target="_blank">🎬 Live Demo (may take a minute to load)</a>
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: User Authentication – Implemented user registration, login, and secure session management using JWT and bcrypt.js for password encryption.\
-:heavy_check_mark: Video Display & Search – Integrated with TMDB API to fetch and display trending movies, categories, and trailers. The platform allows users to search and view detailed movie information.\
-:heavy_check_mark: Responsive Interactive UI – Designed with Tailwind CSS for a responsive, user-friendly layout, optimized for both desktop and mobile devices.\
-:heavy_check_mark: HD Video Playback – Incorporated React Player for smooth and high-definition video playback.\
-:heavy_check_mark: Serverless Deployment – Deployed on Render with a serverless architecture to ensure scalability, high availability, and quick load times.
+:heavy_check_mark: User Authentication – Integrated **Clerk** for secure sign-up/login and robust session management.\
+:heavy_check_mark: Ticket Booking Flow – Intuitive seat selection, real-time availability, and order confirmation.\
+:heavy_check_mark: Payment Integration – Seamless checkout using **Stripe API** for secure transactions.\
+:heavy_check_mark: Admin Dashboard – Manage films, showtimes, and bookings with optimized data queries.\
+:heavy_check_mark: Motion-Enhanced UI – Built with **Framer Motion** and **Shadcn** to deliver a modern, engaging experience.\
+:heavy_check_mark: Optimized Database – Designed **7 MongoDB collections** with reduced redundant queries, improving query efficiency by ~25%.  
 
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
 
-- [Vite] [https://vitejs.dev/]
-- [Express.js] [https://expressjs.com/]
-- [React] [https://reactjs.org/]
-- [Tailwind CSS] [https://tailwindcss.com/]
-- [Axios] [https://axios-http.com/]
-- [MongoDB] [https://www.mongodb.com/]
-- [JWT] [https://jwt.io/]
-- [bcrypt.js] [https://www.npmjs.com/package/bcryptjs]
-- [Render] [https://render.com/]
-- [TMDB API] [https://www.themoviedb.org/]
-- [React Player] [https://github.com/CookPete/react-player]
-- [Neon] [https://neon.tech/]
+- [React (Vite)](https://vitejs.dev/)  
+- [Express.js](https://expressjs.com/)  
+- [MongoDB](https://www.mongodb.com/)  
+- [Tailwind CSS](https://tailwindcss.com/)  
+- [Framer Motion](https://www.framer.com/motion/)  
+- [Shadcn](https://ui.shadcn.com/)  
+- [Clerk](https://clerk.com/)  
+- [Stripe API](https://stripe.com/)  
 
 ## :white_check_mark: Requirements ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com), [Node](https://nodejs.org/en/) and [NPM](https://www.npmjs.com/) installed.
+Before starting :checkered_flag:, make sure you have [Git](https://git-scm.com), [Node](https://nodejs.org/en/), and [NPM](https://www.npmjs.com/) installed.
 
 ## :checkered_flag: Starting ##
 
 ```bash
 # Clone this project
-$ git clone https://github.com/acse-mz223/react_3_netflix
+$ git clone https://github.com/acse-mz223/theatre_ticket_booking
 
 # Access
-$ cd react_3_netflix
+$ cd theatre_ticket_booking
 
 # Install dependencies
-$ npm run build
+$ npm install
 
 # Run the project
-$ npm run start 
+$ npm run dev 
 
-# The server will initialize in the <http://localhost:5001>
+# The app will be available at http://localhost:5173
+
 ```
 
 <!-- ## :memo: License ##
